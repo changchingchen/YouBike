@@ -1,0 +1,9 @@
+/* 
+  Localizable.strings
+  YouBike
+
+  Created by SK on 5/13/16.
+  Copyright © 2016 AppWorks School Snakeking. All rights reserved.
+*/
+"Available Bikes Prefix" = "";
+"Available Bikes Suffix" = "Bike(s) Left";

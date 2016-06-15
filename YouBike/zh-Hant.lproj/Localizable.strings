@@ -1,0 +1,16 @@
+/* 
+  Localizable.strings
+  YouBike
+
+  Created by SK on 5/13/16.
+  Copyright © 2016 AppWorks School Snakeking. All rights reserved.
+*/
+"Log in with Facebook" = "登入FB";
+"View Map" = "看地圖";
+"Facebook Page" = "FB連結";
+"Log Out" = "登出";
+"Available Bikes Prefix" = "剩";
+"Available Bikes Suffix" = "台";
+"Standard" = "標準地圖";
+"Satellite" = "衛星地圖";
+"Hybrid" = "混合地圖";

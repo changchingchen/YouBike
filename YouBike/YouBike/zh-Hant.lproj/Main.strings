@@ -1,0 +1,66 @@
+
+/* Class = "UILabel"; text = "Station Address Cn"; ObjectID = "5mL-Fg-OEP"; */
+"5mL-Fg-OEP.text" = "Station Address Cn";
+
+/* Class = "UITabBarItem"; title = "Stations"; ObjectID = "7u0-VZ-AGb"; */
+"7u0-VZ-AGb.title" = "Stations";
+
+/* Class = "UIButton"; normalTitle = "View Map"; ObjectID = "Per-Hf-11k"; */
+"Per-Hf-11k.normalTitle" = "View Map";
+
+/* Class = "UILabel"; text = "台"; ObjectID = "QQG-aT-nZm"; */
+"QQG-aT-nZm.text" = "台";
+
+/* Class = "UILabel"; text = "剩"; ObjectID = "RXf-vg-9kS"; */
+"RXf-vg-9kS.text" = "剩";
+
+/* Class = "UILabel"; text = "Station Address Cn"; ObjectID = "TQ3-DN-FnO"; */
+"TQ3-DN-FnO.text" = "Station Address Cn";
+
+/* Class = "UITabBarItem"; title = "Profile"; ObjectID = "bYP-xh-bZT"; */
+"bYP-xh-bZT.title" = "Profile";
+
+/* Class = "UILabel"; text = "剩"; ObjectID = "bmr-8x-M2m"; */
+"bmr-8x-M2m.text" = "剩";
+
+/* Class = "UILabel"; text = "Station Name Cn"; ObjectID = "eI0-4s-wDD"; */
+"eI0-4s-wDD.text" = "Station Name Cn";
+
+/* Class = "UIButton"; normalTitle = "Log in with Facebook"; ObjectID = "gjs-H0-xcH"; */
+"gjs-H0-xcH.normalTitle" = "Log in with Facebook";
+
+/* Class = "UILabel"; text = "Station Name Cn"; ObjectID = "m6I-mG-HnV"; */
+"m6I-mG-HnV.text" = "Station Name Cn";
+
+/* Class = "UILabel"; text = "Available Bike"; ObjectID = "n4f-aE-EcL"; */
+"n4f-aE-EcL.text" = "Available Bike";
+
+/* Class = "UILabel"; text = "Available Bike"; ObjectID = "nYA-6i-Xd9"; */
+"nYA-6i-Xd9.text" = "Available Bike";
+
+/* Class = "UIBarButtonItem"; title = "Log Out"; ObjectID = "nZV-8i-66o"; */
+"nZV-8i-66o.title" = "Log Out";
+
+/* Class = "UILabel"; text = "User Name"; ObjectID = "o5v-fJ-fp4"; */
+"o5v-fJ-fp4.text" = "User Name";
+
+/* Class = "UIButton"; normalTitle = "Facebook Page"; ObjectID = "pc6-wo-pWJ"; */
+"pc6-wo-pWJ.normalTitle" = "Facebook Page";
+
+/* Class = "UISegmentedControl"; qhv-gY-UGK.segmentTitles[0] = "Standard"; ObjectID = "qhv-gY-UGK"; */
+"qhv-gY-UGK.segmentTitles[0]" = "Standard";
+
+/* Class = "UISegmentedControl"; qhv-gY-UGK.segmentTitles[1] = "Satellite"; ObjectID = "qhv-gY-UGK"; */
+"qhv-gY-UGK.segmentTitles[1]" = "Satellite";
+
+/* Class = "UISegmentedControl"; qhv-gY-UGK.segmentTitles[2] = "Hybrid"; ObjectID = "qhv-gY-UGK"; */
+"qhv-gY-UGK.segmentTitles[2]" = "Hybrid";
+
+/* Class = "UILabel"; text = "YouBike"; ObjectID = "uil-DO-BPW"; */
+"uil-DO-BPW.text" = "YouBike";
+
+/* Class = "UILabel"; text = "台"; ObjectID = "vVe-H4-aAg"; */
+"vVe-H4-aAg.text" = "台";
+
+/* Class = "UINavigationItem"; title = "YouBike"; ObjectID = "zzc-iv-Gjc"; */
+"zzc-iv-Gjc.title" = "YouBike";

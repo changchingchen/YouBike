@@ -1,0 +1,38 @@
+PODS:
+  - Alamofire (3.3.1)
+  - Bolts (1.7.0):
+    - Bolts/AppLinks (= 1.7.0)
+    - Bolts/Tasks (= 1.7.0)
+  - Bolts/AppLinks (1.7.0):
+    - Bolts/Tasks
+  - Bolts/Tasks (1.7.0)
+  - CryptoSwift (0.2.2)
+  - FBSDKCoreKit (4.11.0):
+    - Bolts (~> 1.7)
+  - FBSDKLoginKit (4.11.0):
+    - FBSDKCoreKit
+  - FBSDKShareKit (4.11.1-beta1):
+    - FBSDKCoreKit (~> 4.11)
+  - JSONWebToken (1.4.3):
+    - CryptoSwift (= 0.2.2)
+  - UILoadControl (2.0.0)
+
+DEPENDENCIES:
+  - Alamofire (~> 3.3)
+  - FBSDKCoreKit (~> 4.11)
+  - FBSDKLoginKit (~> 4.11)
+  - FBSDKShareKit (= 4.11.1-beta1)
+  - JSONWebToken (~> 1.4)
+  - UILoadControl (~> 2.0)
+
+SPEC CHECKSUMS:
+  Alamofire: 369bc67b6f5ac33ded3648d7bd21c5bfb91c2ecc
+  Bolts: a0058fa3b331c5a1e4402d534f2dae36dbff31e4
+  CryptoSwift: d382228d6301c09474132417878a741c2a2e68cd
+  FBSDKCoreKit: 686ac982723a14ec9ddb85e2f81235d7706c891b
+  FBSDKLoginKit: bade9fc78277764149ccc5bfaadbf13c83175c6a
+  FBSDKShareKit: d25045cbc686f62f54f1fec7825e51aea96101c1
+  JSONWebToken: acdab3aeedf8d44f5cf09ad469deb42c4faf3740
+  UILoadControl: 6a21eac2da398f3f5958aba9c1c04a65480f37d5
+
+COCOAPODS: 0.39.0
