@@ -8,7 +8,7 @@
 
 import UIKit
 import UILoadControl
-//import Infinity
+
 
 class YBStationInfoTableViewController: UITableViewController {
 
@@ -34,11 +34,16 @@ class YBStationInfoTableViewController: UITableViewController {
         let nib = UINib(nibName: YBStationInfoTableViewCell.Constant.identifier, bundle: nil)
         self.tableView.registerNib(nib, forCellReuseIdentifier: YBStationInfoTableViewCell.Constant.identifier)
 
-        ybManager.getYBDataFromHTTPByAlamofireWithJWT {
+//        ybManager.getYBDataFromHTTPByAlamofireWithJWT {
+//            [unowned self] in
+//            self.tableView.reloadData()
+//        }
+        
+        
+        ybManager.getYBDataFromDataTaipei {
             [unowned self] in
             self.tableView.reloadData()
         }
-        
         
         
     }
@@ -113,14 +118,6 @@ class YBStationInfoTableViewController: UITableViewController {
         super.viewDidAppear(animated)
         
         self.tableView.reloadData()
-
-//        ybManager.getYBDataFromHTTPByAlamofireWithJWT {
-//            [unowned self] in
-//            self.tableView.reloadData()
-//        }
-
-        
-//        ybManager.getYBDataFromHTTPDelegate()
         
     }
     

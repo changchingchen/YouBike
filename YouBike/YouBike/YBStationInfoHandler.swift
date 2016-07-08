@@ -98,7 +98,7 @@ class YouBikeManager {
     var dataSourceURLPreviousPageString: String?
     
     
-    
+    let dataTaipeiURL = NSURL(string: "http://data.taipei/youbike")!
     let dataSourceURL: NSURL = NSURL(string: "http://139.162.32.152:3000/stations?paging=febe5ekd32dkl923jkdlde")!
     let dataDestinationURL: NSURL = NSURL(string: "http://139.162.32.152:3000/check_in")!
     
@@ -422,6 +422,81 @@ class YouBikeManager {
     }
     
     
+    func getYBDataFromDataTaipei(completion: (()-> Void)?) {
+        
+//        print(ybStationInfos.count)
+//        self.cleanUpYBData()
+        
+        dispatch_async(GlobalPriorityDefaultQueue) {
+            
+            let urlString = self.dataTaipeiURL
+            
+            Alamofire.request(.GET, urlString, parameters: nil, encoding: .URL).validate().responseJSON {
+                response -> Void in
+                
+                if let ybJSONObject = response.result.value as? [String:AnyObject] {
+                    self.parseJSONFromDataTaipei(ybJSONObject)
+                }
+                
+                
+                
+//                if let ybStationInfosFromCoreData = self.readYBData() {
+//                    self.ybStationInfos = ybStationInfosFromCoreData
+//                }
+                
+                dispatch_async(GlobalMainQueue) {
+                    completion?()
+                }
+            }
+            
+        }
+     
+        
+    }
+    
+    
+    func parseJSONFromDataTaipei(jsonObject: AnyObject) {
+        guard let jsonObjects = jsonObject as? [String:AnyObject] else {
+            return
+        }
+        
+        guard let ybStationsJSON = jsonObjects["retVal"] as? [String:AnyObject] else {
+            return
+        }
+        
+        for stationID in 1...ybStationsJSON.count {
+            let stationIDString = String(format: "%04d", stationID)
+            guard let ybStation = ybStationsJSON[stationIDString] as? [String:AnyObject] else {
+                print("Returned")
+                return
+            }
+            
+            if let addressCn = ybStation["ar"] as? String,
+                let addressEn = ybStation["aren"] as? String,
+                let emptySpace = ybStation["bemp"] as? String,
+                let latitude = ybStation["lat"] as? String,
+                let longitude = ybStation["lng"] as? String,
+                let districtCn = ybStation["sarea"] as? String,
+                let districtEn = ybStation["sareaen"] as? String,
+                let availableBikes = ybStation["sbi"] as? String,
+                let placeNameCn = ybStation["sna"] as? String,
+                let placeNameEn = ybStation["snaen"] as? String,
+                let id = ybStation["sno"] as? String {
+                
+                
+                let newYBStation = YBStationInfo(number: Int(id)!, nameCn: placeNameCn, availableBike: Int(availableBikes)!, areaCn: districtCn, latitude: Double(latitude)!, longitude: Double(longitude)!, addressCn: addressCn, areaEn: districtEn, nameEn: placeNameEn, addressEn: addressEn)
+                
+                self.ybStationInfos.append(newYBStation)
+                
+                updateYBData(newYBStation)
+                
+            }
+            
+        }
+
+
+    }
+    
     // CRUD of CoreData
     func createYBData(ybStation: YBStationInfo) {
         guard let newStation = NSEntityDescription.insertNewObjectForEntityForName("YBStation", inManagedObjectContext: self.ybStationMOC) as? YBStation
@@ -500,7 +575,7 @@ class YouBikeManager {
     func updateYBData(ybStationInfo: YBStationInfo) {
         let request = NSFetchRequest(entityName: "YBStation")
         
-        request.predicate = NSPredicate(format: "number == %@", ybStationInfo.number)
+        request.predicate = NSPredicate(format: "number == %i", ybStationInfo.number)
         
         do {
             guard let results = try ybStationMOC.executeFetchRequest(request) as? [YBStation]
@@ -511,17 +586,22 @@ class YouBikeManager {
             
             if !results.isEmpty {
                 let ybStation = results[0]
-                ybStation.setValue(ybStationInfo.nameCn, forKey: "nameCn")
-                ybStation.setValue(ybStationInfo.availableBike, forKey: "availableBike")
-                ybStation.setValue(ybStationInfo.areaCn, forKey: "areaCn")
-                ybStation.setValue(ybStationInfo.latitude, forKey: "latitude")
-                ybStation.setValue(ybStationInfo.longitude, forKey: "longitude")
-                ybStation.setValue(ybStationInfo.addressCn, forKey: "addressCn")
-                ybStation.setValue(ybStationInfo.areaEn, forKey: "areaEn")
-                ybStation.setValue(ybStationInfo.nameEn, forKey: "nameEn")
-                ybStation.setValue(ybStationInfo.addressEn, forKey: "addressEn")
+
+                ybStation.availableBike = ybStationInfo.availableBike
+                
+//                ybStation.setValue(ybStationInfo.nameCn, forKey: "nameCn")
+//                ybStation.setValue(ybStationInfo.availableBike, forKey: "availableBike")
+//                ybStation.setValue(ybStationInfo.areaCn, forKey: "areaCn")
+//                ybStation.setValue(ybStationInfo.latitude, forKey: "latitude")
+//                ybStation.setValue(ybStationInfo.longitude, forKey: "longitude")
+//                ybStation.setValue(ybStationInfo.addressCn, forKey: "addressCn")
+//                ybStation.setValue(ybStationInfo.areaEn, forKey: "areaEn")
+//                ybStation.setValue(ybStationInfo.nameEn, forKey: "nameEn")
+//                ybStation.setValue(ybStationInfo.addressEn, forKey: "addressEn")
 
                 try self.ybStationMOC.save()
+            } else {
+                createYBData(ybStationInfo)
             }
         } catch {
             fatalError("Failed to update data: \(error)")
